@@ -1,0 +1,70 @@
+\documentclass[12pt]{article}
+
+% compile this latex file with "pdflatex assig3Report"
+% Lines staring with % are comments
+% Graphics files are included with the \includegraphics command. 
+% You will need to comment these out to use them.
+
+% additional latex packages to use
+\usepackage[a4paper, left=2.2cm,top=1.5cm, right=2.2cm,bottom=1.5cm,]{geometry}
+\usepackage{times, graphicx, amsmath, mathtools}
+\usepackage{url,multirow,xfrac}
+
+% not so much space around floats
+\renewcommand{\floatpagefraction}{0.95}
+\renewcommand{\textfraction}{0}
+\renewcommand{\topfraction}{1}
+\renewcommand{\bottomfraction}{1}
+
+\begin{document}
+\thispagestyle{empty}
+
+\title{MTMW12, Assignment 3, Numerical Differentiation}
+\author{Your stuent ID}
+\maketitle
+
+The code for this assignment is in the github repository\\
+\url{https://github.com/hilaryweller0/MTMW12_assig3}, commit id 8f30091. This repository is either public or has been made available to github user \url{hilaryweller0} (delete as appropriate).
+
+\begin{enumerate}
+\item The wind, $u$, is evaluated from the pressure, $p$, by numerically differentiating the geostrophic wind relation:
+\begin{equation}
+u = -\frac{1}{\rho f}\frac{dp}{dy}
+\label{eq:geoWind}
+\end{equation}
+where for this assignment the pressure, $p$, is given by:
+\begin{equation}
+p = p_a + p_b \cos\frac{y\pi}{L}
+\label{eq:cosPressure}
+\end{equation}
+where $p_a=10^5 Pa$, $p_b=200 Pa$, $f = 10^{-4}s^{-1}$, $\rho=1.2 kg m^{-3}$, $L = 2.4\times 10^6 m$ and $y:0\rightarrow 10^6 m$. The domain is divided into $N=10$ equal intervals. The exact $u$ is:
+\begin{equation}
+u_e = \frac{p^\prime\pi}{\rho f L}\sin\frac{y\pi}{L}.
+\label{eq:exactU}
+\end{equation}
+The wind is evaluated numerically from the pressure gradient using the centred, second-order, two-point finite difference formula away from the end-points of the domain and using one-sided, first-order approximations at the end points to calculate the pressure gradients. The code for this implementation is in file \url{differentiate.py}. The exact and numerically evaluated winds are shown in figure \ref{fig:u2pt} on the left and the errors are shown on the right.
+
+\begin{figure}[htb]
+%\includegraphics[width=0.49\linewidth]{plots/geoWindCent.pdf}
+%\includegraphics[width=0.49\linewidth]{plots/geoWindErrorsCent.pdf}
+\centerline{\fbox{Here is the figure}}
+\caption{The analytic wind from the geostrophic relation and the numerical approximation calculated using two-point differences.}
+\label{fig:u2pt}
+\end{figure}
+
+Here are my comments on the results in figure \ref{fig:u2pt}.
+
+{\it Note:} For the next part {\it``Does the code behave as expected''} there is not one definitive answer. A variety of answers could gain full marks.
+
+Here is a description of the experiment that I designed to check a particular numerical property of the method.
+
+The code for generating these results is in files \url{file1.py} and \url{file2.py}.
+
+The results of this experiment are presented in figure \ref{fig:Q1exp}. I discuss the results here and say if they demonstrate that the scheme behaves as expected. 
+
+\item There are many different ways that you could improve the accuracy for the same computational cost. Describe the technique that you chose, present the results, describe an experiment that shows if the scheme behaves as expected and present and comment on the results.
+
+Give the Python file names that generate the results.
+
+\end{enumerate}
+\end{document}
