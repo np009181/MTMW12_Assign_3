@@ -1,3 +1,4 @@
+
 #Intro to numerical modelling - Assignment 3#
 
 #Question 1#
@@ -28,6 +29,25 @@ def main():
         
     print(p)
     
+    dp = np.zeros(N + 1)
+    
+    dp[0] = (p[1] - p[0])/ dy      #I know the formula for the end points so I# 
+    dp[N] = (p[N] - p[N - 1])/ dy  #have put this formula outside of the loop#
+    
+    for i in range (1, N):     #Finds the other points using centred#
+        dp[i] = (p[i + 1] - p[i - 1])/ (2*dy)  #formula#
+        
+        
+    print(dp)
+    
+    r = 1
+    f = 1e-4
+    
+    u = -dp/(r*f)             #The formula for wind speed# 
+    
+    print(u)
+    
+    plt.plot(y, u)            #A plot showing the locations against wind speed#
     
     
     
