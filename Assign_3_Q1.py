@@ -1,4 +1,3 @@
-
 #Intro to numerical modelling - Assignment 3#
 
 #Question 1#
@@ -47,8 +46,20 @@ def main():
     
     print(u)
     
-    plt.plot(y, u)            #A plot showing the locations against wind speed#
+    U = np.sin(np.pi*y/L) * (np.pi*pb)/(r*f*L)    #Analytical solution#
     
+    plt.figure(1)
+    plt.plot(y, u, label = 'Numerical')    #Plot of numerical solution#
+    plt.plot(y, U, label = 'Analytical',)   #Analytical solution to compare#
+    plt.xlabel('Location (m)')
+    plt.ylabel('Wind speed')    
+    plt.legend()
+    plt.title('Comparison of Numerical and Analytical solution of wind speed')
+    
+    e = U - u    #Finding the errors of the numerical solution#
+    
+    plt.figure(2)
+    plt.hist(y, e)
     
     
 main()
