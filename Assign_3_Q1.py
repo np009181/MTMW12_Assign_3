@@ -2,6 +2,7 @@
 
 #Question 1#
 import numpy as np
+import matplotlib.pyplot as plt
 
 def main():
     ymin = 0.                 #Setting values for fixed numbers#
