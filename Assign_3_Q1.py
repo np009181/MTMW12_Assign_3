@@ -59,7 +59,11 @@ def main():
     e = U - u    #Finding the errors of the numerical solution#
     
     plt.figure(2)
-    plt.hist(y, e)
+    plt.plot(y, e)
+    plt.xlabel('Location (m)')
+    plt.ylabel('Error in numerical solution')
+    plt.title('Error of numerical solution compared with analytical')
+    
     
     
 main()
